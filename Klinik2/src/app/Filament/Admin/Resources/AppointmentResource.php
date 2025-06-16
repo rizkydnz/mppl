@@ -17,7 +17,7 @@ class AppointmentResource extends Resource
 {
     protected static ?string $model = Appointment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
 
     public static function form(Form $form): Form
     {
@@ -77,6 +77,7 @@ class AppointmentResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

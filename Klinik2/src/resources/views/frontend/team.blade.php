@@ -44,137 +44,51 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <p class="d-inline-block border rounded-pill py-1 px-4">Doctors</p>
-                <h1>Our Experience Doctors</h1>
+                <h1>Our Experienced Doctors</h1>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
+            <div class="row g-4 justify-content-center">
+                @php
+            $doctors = [
+                [
+                    'name' => 'Dr. Putra Daffa',
+                    'department' => 'Bedah',
+                    'image' => 'Putra.jpg',
+                    'facebook' => 'https://www.facebook.com/putradaffa',
+                    'instagram' => 'https://www.instagram.com/putradaffad',
+                ],
+                [
+                    'name' => 'Dr. Rizky Dwi',
+                    'department' => 'Psikologi',
+                    'image' => 'Rizky.jpg',
+                    'facebook' => 'https://www.facebook.com/rizkydwi',
+                    'instagram' => 'https://www.instagram.com/rizkydnz',
+                ],
+                [
+                    'name' => 'Dr. Muhammad Arifin',
+                    'department' => 'Kelamin',
+                    'image' => 'Arifin.jpg',
+                    'facebook' => 'https://www.facebook.com/muhammadarifin',
+                    'instagram' => 'https://www.instagram.com/muhammadarifin',
+                ],
+                ];
+                @endphp
+                @foreach ($doctors as $index => $doctor)
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="{{ 0.1 + $index * 0.2 }}s">
+                        <div class="team-item position-relative rounded overflow-hidden">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="{{ asset('assets/klinik/img/' . $doctor['image']) }}" alt="{{ $doctor['name'] }}">
+                            </div>
+                            <div class="team-text bg-light text-center p-4">
+                                <h5>{{ $doctor['name'] }}</h5>
+                                <p class="text-primary">{{ $doctor['department'] }}</p>
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square" href="{{ $doctor['facebook'] }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square" href="{{ $doctor['instagram'] }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                            </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

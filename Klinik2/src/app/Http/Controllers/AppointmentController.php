@@ -12,36 +12,40 @@ class AppointmentController extends Controller
     /**
      * Simpan data appointment dari form.
      */
-    public function store(Request $request)
-    {
-        // Validasi input
-        $validated = $request->validate([
-            'name' => 'required|string|max:100',
-            'email' => 'required|email|max:255',
-            'mobile' => 'required|string|max:20',
-            'doctor' => 'required|string|max:100',
-            'date' => 'required|date',
-            'time' => 'required|string|max:20',
-            'message' => 'nullable|string|max:1000',
-        ]);
+public function store(Request $request)
+{
+    // Validasi input
+    $validated = $request->validate([
+        'name' => 'required|string|max:100',
+        'email' => 'required|email|max:255',
+        'mobile' => 'required|string|max:20',
+        'doctor' => 'required|string|max:100',
+        'date' => 'required|date',
+        'time' => 'required|string|max:20',
+        'message' => 'required|array|min:1', // ✅ VALIDASI SEBAGAI ARRAY
+        'message.*' => 'string|max:1000', // ✅ Validasi tiap item dalam array
+    ]);
 
-        // Simpan ke database
-        $appointment = Appointment::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'mobile' => $validated['mobile'],
-            'doctor' => $validated['doctor'],
-            'date' => $validated['date'],
-            'time' => $validated['time'],
-            'message' => $validated['message'] ?? null,
-        ]);
+    // Gabungkan array message menjadi string
+    $pesanGabung = implode(', ', $validated['message']);
 
-        // (Opsional) Kirim notifikasi email ke pasien
-        // Mail::to($appointment->email)->send(new AppointmentConfirmationMail($appointment));
+    // Simpan ke database
+    $appointment = Appointment::create([
+        'name' => $validated['name'],
+        'email' => $validated['email'],
+        'mobile' => $validated['mobile'],
+        'doctor' => $validated['doctor'],
+        'date' => $validated['date'],
+        'time' => $validated['time'],
+        'message' => $pesanGabung, // ✅ SIMPAN SEBAGAI STRING
+    ]);
 
-        // Redirect kembali dengan pesan sukses
-        return back()->with('success', 'Appointment berhasil dikirim!');
-    }
+    // (Opsional) Kirim email konfirmasi
+    // Mail::to($appointment->email)->send(new AppointmentConfirmationMail($appointment));
+
+    return back()->with('success', 'Appointment berhasil dikirim!');
+}
+
 
     /**
      * Tampilkan daftar semua appointment (misalnya untuk admin).

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\HomeController;
 
 /* NOTE: Do Not Remove
 / Livewire asset handling if using sub folder in domain
@@ -31,8 +32,9 @@ Route::view('/testimonial', 'frontend.testimonial')->name('testimonial');
 Route::view('/contact', 'frontend.contact')->name('contact');
 Route::view('/404', 'frontend.404')->name('404');
 
-// Untuk menyimpan appointment dari form
-Route::post('/appointment', [AppointmentController::class, 'store'])->name('appointment.store');
+// AppointmentController
+Route::post('/appointment', [AppointmentController::class, 'store'])->name('appointment.store'); // Untuk menyimpan appointment dari form
+Route::get('/admin/appointments/{id}', [AppointmentController::class, 'show'])->name('admin.appointments.show'); // (Opsional) Detail per appointment
 
-// (Opsional) Detail per appointment
-Route::get('/admin/appointments/{id}', [AppointmentController::class, 'show'])->name('admin.appointments.show');
+// HomeController
+Route::get('/', [HomeController::class, 'index']);

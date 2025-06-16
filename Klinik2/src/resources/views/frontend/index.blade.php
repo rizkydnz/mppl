@@ -6,6 +6,7 @@
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('assets/klinik/lib/animate/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/klinik/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/klinik/lib/owlcarousel/assets/owl.theme.default.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/klinik/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
@@ -27,23 +28,18 @@
     <div class="container-fluid header bg-primary p-0 mb-5">
         <div class="row g-0 align-items-center flex-column-reverse flex-lg-row">
             <div class="col-lg-6 p-5 wow fadeIn" data-wow-delay="0.1s">
-                <h1 class="display-4 text-white mb-5">Good Health Is The Root Of All Heppiness</h1>
+                <h1 class="display-4 text-white mb-5">Good Health Is The Root Of All Happiness</h1>
                 <div class="row g-4">
                     <div class="col-sm-4">
                         <div class="border-start border-light ps-4">
-                            <h2 class="text-white mb-1" data-toggle="counter-up">123</h2>
+                            <h2 class="text-white mb-1" data-toggle="counter-up">3</h2>
                             <p class="text-light mb-0">Expert Doctors</p>
                         </div>
                     </div>
+                    <!-- Total Patients -->
                     <div class="col-sm-4">
                         <div class="border-start border-light ps-4">
-                            <h2 class="text-white mb-1" data-toggle="counter-up">1234</h2>
-                            <p class="text-light mb-0">Medical Staff</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="border-start border-light ps-4">
-                            <h2 class="text-white mb-1" data-toggle="counter-up">12345</h2>
+                            <h2 class="text-white mb-1" data-toggle="counter-up">{{ $totalPatients }}</h2>
                             <p class="text-light mb-0">Total Patients</p>
                         </div>
                     </div>
@@ -52,22 +48,16 @@
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                 <div class="owl-carousel header-carousel">
                     <div class="owl-carousel-item position-relative">
-                        <img class="img-fluid" src="{{ asset('assets/klinik/img/carousel-1.jpg') }}" alt="">
-                        <div class="owl-carousel-text">
-                            <h1 class="display-1 text-white mb-0">Cardiology</h1>
-                        </div>
+                        <img class="img-fluid" src="{{ asset('assets/klinik/img/Putra-1.jpg') }}" alt="">
+                        <div class="owl-carousel-text"></div>
                     </div>
                     <div class="owl-carousel-item position-relative">
-                        <img class="img-fluid" src="{{ asset('assets/klinik/img/carousel-2.jpg') }}" alt="">
-                        <div class="owl-carousel-text">
-                            <h1 class="display-1 text-white mb-0">Neurology</h1>
-                        </div>
+                        <img class="img-fluid" src="{{ asset('assets/klinik/img/Rizky-1.jpg') }}" alt="">
+                        <div class="owl-carousel-text"></div>
                     </div>
                     <div class="owl-carousel-item position-relative">
-                        <img class="img-fluid" src="{{ asset('assets/klinik/img/carousel-3.jpg') }}" alt="">
-                        <div class="owl-carousel-text">
-                            <h1 class="display-1 text-white mb-0">Pulmonary</h1>
-                        </div>
+                        <img class="img-fluid" src="{{ asset('assets/klinik/img/Arifin-1.jpg') }}" alt="">
+                        <div class="owl-carousel-text"></div>
                     </div>
                 </div>
             </div>
@@ -99,6 +89,79 @@
         </div>
     </div>
     <!-- About End -->
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">Services</p>
+                <h1>Health Care Solutions</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa fa-heartbeat text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Cardiology</h4>
+                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa fa-x-ray text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Pulmonary</h4>
+                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa fa-brain text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Neurology</h4>
+                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa fa-wheelchair text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Orthopedics</h4>
+                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa fa-tooth text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Dental Surgery</h4>
+                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa fa-vials text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Laboratory</h4>
+                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
 
 
     <!-- Feature Start -->
@@ -143,104 +206,53 @@
                 <p class="d-inline-block border rounded-pill py-1 px-4">Doctors</p>
                 <h1>Our Experienced Doctors</h1>
             </div>
-            <div class="row g-4">
-                @for ($i = 1; $i <= 4; $i++)
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="{{ 0.1 + ($i - 1) * 0.2 }}s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('assets/klinik/img/team-' . $i . '.jpg') }}" alt="Doctor {{ $i }}">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
+            <div class="row g-4 justify-content-center">
+                @php
+            $doctors = [
+                [
+                    'name' => 'Dr. Putra Daffa',
+                    'department' => 'Bedah',
+                    'image' => 'Putra.jpg',
+                    'facebook' => 'https://www.facebook.com/putradaffa',
+                    'instagram' => 'https://www.instagram.com/putradaffad',
+                ],
+                [
+                    'name' => 'Dr. Rizky Dwi',
+                    'department' => 'Psikologi',
+                    'image' => 'Rizky.jpg',
+                    'facebook' => 'https://www.facebook.com/rizkydwi',
+                    'instagram' => 'https://www.instagram.com/rizkydnz',
+                ],
+                [
+                    'name' => 'Dr. Muhammad Arifin',
+                    'department' => 'Kelamin',
+                    'image' => 'Arifin.jpg',
+                    'facebook' => 'https://www.facebook.com/muhammadarifin',
+                    'instagram' => 'https://www.instagram.com/muhammadarifin',
+                ],
+                ];
+                @endphp
+                @foreach ($doctors as $index => $doctor)
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="{{ 0.1 + $index * 0.2 }}s">
+                        <div class="team-item position-relative rounded overflow-hidden">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="{{ asset('assets/klinik/img/' . $doctor['image']) }}" alt="{{ $doctor['name'] }}">
+                            </div>
+                            <div class="team-text bg-light text-center p-4">
+                                <h5>{{ $doctor['name'] }}</h5>
+                                <p class="text-primary">{{ $doctor['department'] }}</p>
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square" href="{{ $doctor['facebook'] }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square" href="{{ $doctor['instagram'] }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                            </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>
     <!-- Team End -->
-
-    <!-- Appointment Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <p class="d-inline-block border rounded-pill py-1 px-4">Appointment</p>
-                    <h1 class="mb-4">Make An Appointment To Visit Our Doctor</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit...</p>
-                    <div class="bg-light rounded d-flex align-items-center p-5 mb-4">
-                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
-                            <i class="fa fa-phone-alt text-primary"></i>
-                        </div>
-                        <div class="ms-4">
-                            <p class="mb-2">Call Us Now</p>
-                            <h5 class="mb-0">+012 345 6789</h5>
-                        </div>
-                    </div>
-                    <div class="bg-light rounded d-flex align-items-center p-5">
-                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
-                            <i class="fa fa-envelope-open text-primary"></i>
-                        </div>
-                        <div class="ms-4">
-                            <p class="mb-2">Mail Us Now</p>
-                            <h5 class="mb-0">info@example.com</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="bg-light rounded h-100 d-flex align-items-center p-5">
-                        <form method="POST" action="{{ isset($appointment) ? route('appointment.update', $appointment->id) : route('appointment.store') }}">
-                            @csrf
-                            @if(isset($appointment))
-                                @method('PUT')
-                            @endif
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" name="name" value="{{ old('name', $appointment->name ?? '') }}" class="form-control border-0" placeholder="Your Name" required style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" name="email" value="{{ old('email', $appointment->email ?? '') }}" class="form-control border-0" placeholder="Your Email" required style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" name="phone" value="{{ old('phone', $appointment->phone ?? '') }}" class="form-control border-0" placeholder="Your Mobile" required style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <select name="doctor" class="form-select border-0" required style="height: 55px;">
-                                        <option selected disabled>Choose Doctor</option>
-                                        <option value="Doctor 1" {{ (old('doctor', $appointment->doctor ?? '') == 'Doctor 1') ? 'selected' : '' }}>Rizky Dwi</option>
-                                        <option value="Doctor 2" {{ (old('doctor', $appointment->doctor ?? '') == 'Doctor 2') ? 'selected' : '' }}>Muhammad Arifin</option>
-                                        <option value="Doctor 3" {{ (old('doctor', $appointment->doctor ?? '') == 'Doctor 3') ? 'selected' : '' }}>Putra Daffa</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" name="date" value="{{ old('date', $appointment->date ?? '') }}" class="form-control border-0 datetimepicker-input" placeholder="Choose Date" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" name="time" value="{{ old('time', $appointment->time ?? '') }}" class="form-control border-0 datetimepicker-input" placeholder="Choose Time" style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <textarea name="message" class="form-control border-0" rows="5" placeholder="Describe your problem">{{ old('message', $appointment->message ?? '') }}</textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">
-                                        {{ isset($appointment) ? 'Update Appointment' : 'Book Appointment' }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Appointment End -->
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -253,5 +265,23 @@
     <script src="{{ asset('assets/klinik/lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ asset('assets/klinik/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ asset('assets/klinik/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+    <script>
+    $(document).ready(function(){
+    $('.header-carousel').owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        nav: true,
+        dots: true,
+        navText: [
+            '<span class="bi bi-arrow-left"></span>', 
+            '<span class="bi bi-arrow-right"></span>'
+            ]
+        });
+    });
+    </script>
 
 @endsection

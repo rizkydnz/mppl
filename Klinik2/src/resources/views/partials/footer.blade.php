@@ -15,7 +15,7 @@
             
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-light mb-4">Address</h5>
-                <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                <p><i class="fa fa-map-marker-alt me-3"></i>Kab. Tangerang, Cikupa, Citra Raya</p>
                 <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
                 <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
             </div>
@@ -41,11 +41,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                    &copy; <a href="#">Kelompok 6</a>, All Right Reserved.
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                    Designed By <a href="https://htmlcodex.com">Kelompok 6</a>
                 </div>
             </div>
         </div>
