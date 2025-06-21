@@ -29,16 +29,9 @@ class DokterResource extends Resource
                 Forms\Components\TextInput::make('spesialis')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('no_hp')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('foto')
-                    ->maxLength(255)
-                    ->default(null),
+                Forms\Components\FileUpload::make('foto')
+                    ->image()
+                    ->required(),
             ]);
     }
 
@@ -50,12 +43,7 @@ class DokterResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('spesialis')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('no_hp')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('foto')
-                    ->searchable(),
+                Tables\Columns\ImageColumn::make('foto'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -70,6 +58,7 @@ class DokterResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

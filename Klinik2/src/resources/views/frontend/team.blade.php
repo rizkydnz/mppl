@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Team | Klinik Bersama')
+@section('title', 'Team | Klinik SehatLah')
 
 @push('assets')
     <!-- Libraries Stylesheet -->
@@ -38,7 +38,6 @@
     </div>
     <!-- Page Header End -->
 
-
     <!-- Team Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -48,43 +47,43 @@
             </div>
             <div class="row g-4 justify-content-center">
                 @php
-            $doctors = [
-                [
-                    'name' => 'Dr. Putra Daffa',
-                    'department' => 'Bedah',
-                    'image' => 'Putra.jpg',
-                    'facebook' => 'https://www.facebook.com/putradaffa',
-                    'instagram' => 'https://www.instagram.com/putradaffad',
-                ],
-                [
-                    'name' => 'Dr. Rizky Dwi',
-                    'department' => 'Psikologi',
-                    'image' => 'Rizky.jpg',
-                    'facebook' => 'https://www.facebook.com/rizkydwi',
-                    'instagram' => 'https://www.instagram.com/rizkydnz',
-                ],
-                [
-                    'name' => 'Dr. Muhammad Arifin',
-                    'department' => 'Kelamin',
-                    'image' => 'Arifin.jpg',
-                    'facebook' => 'https://www.facebook.com/muhammadarifin',
-                    'instagram' => 'https://www.instagram.com/muhammadarifin',
-                ],
-                ];
+                    $socialMedia = [
+                        'Dr. Putra Daffa' => [
+                            'instagram' => 'https://www.instagram.com/putradaffad',
+                            'github' => 'https://github.com/putradaffad',
+                        ],
+                        'Dr. Rizky Dwi' => [
+                            'instagram' => 'https://www.instagram.com/rizkydnz',
+                            'github' => 'https://github.com/rizkydnz',
+                        ],
+                        'Dr. Muhammad Arifin' => [
+                            'instagram' => 'https://www.instagram.com/arifin.sulistiono',
+                            'github' => 'https://github.com/arifinsulistiono',
+                        ],
+                    ];
                 @endphp
+
                 @foreach ($doctors as $index => $doctor)
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="{{ 0.1 + $index * 0.2 }}s">
                         <div class="team-item position-relative rounded overflow-hidden">
                             <div class="overflow-hidden">
-                                <img class="img-fluid" src="{{ asset('assets/klinik/img/' . $doctor['image']) }}" alt="{{ $doctor['name'] }}">
+                                <img class="img-fluid" src="{{ asset($doctor->foto) }}" alt="{{ $doctor->nama }}">
                             </div>
                             <div class="team-text bg-light text-center p-4">
-                                <h5>{{ $doctor['name'] }}</h5>
-                                <p class="text-primary">{{ $doctor['department'] }}</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href="{{ $doctor['facebook'] }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href="{{ $doctor['instagram'] }}" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </div>
+                                <h5>{{ $doctor->nama }}</h5>
+                                <p class="text-primary">{{ $doctor->spesialis }}</p>
+                                <div class="team-social text-center">
+                                    @if (isset($socialMedia[$doctor->nama]['instagram']))
+                                        <a class="btn btn-square" href="{{ $socialMedia[$doctor->nama]['instagram'] }}" target="_blank">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    @endif
+                                    @if (isset($socialMedia[$doctor->nama]['github']))
+                                        <a class="btn btn-square" href="{{ $socialMedia[$doctor->nama]['github'] }}" target="_blank">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -96,7 +95,6 @@
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -111,5 +109,5 @@
     <script src="{{ asset('assets/klinik/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{{ asset('assets/klinik/js/main.js') }}"></script>
 @endsection

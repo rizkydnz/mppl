@@ -3,27 +3,21 @@
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
-                <h1 class="fw-bold text-primary mb-4">Klinik<span class="text-white">Bersama</span></h1>
+                <h1 class="fw-bold text-primary mb-4">Klinik <span class="text-white">SehatLah</span></h1>
                 <p>Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita</p>
-                <div class="d-flex pt-2">
-                    <a class="btn btn-square me-1" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-square me-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-square me-1" href="#"><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-square me-0" href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
             </div>
             
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-light mb-4">Address</h5>
                 <p><i class="fa fa-map-marker-alt me-3"></i>Kab. Tangerang, Cikupa, Citra Raya</p>
-                <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                <p><i class="fa fa-phone-alt me-3"></i>+62 2345 6789</p>
+                <p><i class="fa fa-envelope me-3"></i>kliniksehatlah@gmail.com</p>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-light mb-4">Quick Links</h5>
                 <a class="btn btn-link" href="{{ url('/about') }}">About Us</a>
                 <a class="btn btn-link" href="{{ url('/contact') }}">Contact Us</a>
-                <a class="btn btn-link" href="{{ url('/service') }}">Our Services</a>
+                <a class="btn btn-link" href="{{ url('/team') }}">Doctor</a>
                 <a class="btn btn-link" href="#">Terms & Condition</a>
                 <a class="btn btn-link" href="#">Support</a>
             </div>

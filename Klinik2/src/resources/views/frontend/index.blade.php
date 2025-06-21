@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home | Klinik Bersama')
+@section('title', 'Home | Klinik SehatLah')
 
 @push('assets')
     <!-- Libraries Stylesheet -->
@@ -66,102 +66,79 @@
     <!-- Header End -->
 
     <!-- About Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5 bg-light">
         <div class="container">
             <div class="row g-5">
+                <!-- Gambar -->
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="d-flex flex-column">
                         <img class="img-fluid rounded w-75 align-self-end" src="{{ asset('assets/klinik/img/about-1.jpg') }}" alt="Tentang Kami 1">
                         <img class="img-fluid rounded w-50 bg-white pt-3 pe-3" src="{{ asset('assets/klinik/img/about-2.jpg') }}" alt="Tentang Kami 2" style="margin-top: -25%;">
                     </div>
                 </div>
+                
+                <!-- Teks -->
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <p class="d-inline-block border rounded-pill py-1 px-4">About Us</p>
-                    <h1 class="mb-4">Why You Should Trust Us? Get To Know About Us!</h1>
-                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos...</p>
-                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos...</p>
-                    <p><i class="far fa-check-circle text-primary me-3"></i>Quality health care</p>
-                    <p><i class="far fa-check-circle text-primary me-3"></i>Only Qualified Doctors</p>
-                    <p><i class="far fa-check-circle text-primary me-3"></i>Medical Research Professionals</p>
-                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="{{ url('/about') }}">Read More</a>
+                    <p class="d-inline-block border rounded-pill py-1 px-4 text-secondary">Tentang Kami</p>
+                    <h2 class="mb-4 text-primary">Klinik Dengan Pelayanan Kesehatan Yang Terjangkau</h2>
+                    <p>Kami adalah klinik yang memberikan layanan kesehatan dasar dengan fokus pada kenyamanan dan keterjangkauan untuk masyarakat sekitar. Berpengalaman melayani pasien dari berbagai kalangan, kami percaya bahwa setiap orang berhak mendapatkan perawatan yang layak.</p>
+                    <p class="mb-4">Dengan tenaga medis yang ramah dan fasilitas sederhana namun memadai, kami siap membantu Anda menjaga kesehatan sehari-hari tanpa perlu jauh-jauh ke rumah sakit besar.</p>
+                    <p><i class="far fa-check-circle text-primary me-3"></i>Pelayanan cepat dan ramah</p>
+                    <p><i class="far fa-check-circle text-primary me-3"></i>Dokter yang sudah berpengalaman</p>
+                    <p><i class="far fa-check-circle text-primary me-3"></i>Harga terjangkau untuk semua kalangan</p>
+                    <a class="btn btn-outline-primary rounded-pill py-3 px-5 mt-3" href="{{ url('/appointment') }}">Appointment Now</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- About End -->
 
+
     <!-- Service Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5 bg-light">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <p class="d-inline-block border rounded-pill py-1 px-4">Services</p>
-                <h1>Health Care Solutions</h1>
+                <p class="d-inline-block border rounded-pill py-1 px-4 text-secondary">Layanan Kami</p>
+                <h1 class="text-primary">Layanan Klinik Sederhana</h1>
             </div>
             <div class="row g-4">
+                <!-- Layanan Umum -->
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-heartbeat text-primary fs-4"></i>
+                    <div class="service-item bg-white rounded shadow-sm h-100 p-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-circle mb-4" style="width: 60px; height: 60px;">
+                            <i class="fa fa-stethoscope fs-4"></i>
                         </div>
-                        <h4 class="mb-3">Cardiology</h4>
-                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                        <h5 class="mb-3">Pemeriksaan Umum</h5>
+                        <p>Konsultasi dan pemeriksaan kesehatan dasar oleh dokter umum.</p>
                     </div>
                 </div>
+
+                <!-- Cek Laboratorium -->
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-x-ray text-primary fs-4"></i>
+                    <div class="service-item bg-white rounded shadow-sm h-100 p-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-circle mb-4" style="width: 60px; height: 60px;">
+                            <i class="fa fa-vial fs-4"></i>
                         </div>
-                        <h4 class="mb-3">Pulmonary</h4>
-                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                        <h5 class="mb-3">Cek Laboratorium</h5>
+                        <p>Pemeriksaan darah, urin, dan laboratorium dasar lainnya.</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-brain text-primary fs-4"></i>
+
+                <!-- Rawat Luka Ringan -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="service-item bg-white rounded shadow-sm h-100 p-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-circle mb-4" style="width: 60px; height: 60px;">
+                            <i class="fa fa-band-aid fs-4"></i>
                         </div>
-                        <h4 class="mb-3">Neurology</h4>
-                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-wheelchair text-primary fs-4"></i>
-                        </div>
-                        <h4 class="mb-3">Orthopedics</h4>
-                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-tooth text-primary fs-4"></i>
-                        </div>
-                        <h4 class="mb-3">Dental Surgery</h4>
-                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-vials text-primary fs-4"></i>
-                        </div>
-                        <h4 class="mb-3">Laboratory</h4>
-                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                        <h5 class="mb-3">Perawatan Luka</h5>
+                        <p>Penanganan luka ringan, perban, dan penggantian balutan.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Service End -->
+
 
 
     <!-- Feature Start -->
@@ -172,7 +149,7 @@
                     <div class="p-lg-5 ps-lg-0">
                         <p class="d-inline-block border rounded-pill text-light py-1 px-4">Features</p>
                         <h1 class="text-white mb-4">Why Choose Us</h1>
-                        <p class="text-white mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit...</p>
+                        <p class="text-white mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
                         <div class="row g-4">
                             <div class="col-6">
                                 <div class="d-flex align-items-center">
@@ -185,13 +162,45 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Ulangi untuk fitur lainnya... -->
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-check text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">Quality</p>
+                                        <h5 class="text-white mb-0">Services</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-comment-medical text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">Positive</p>
+                                        <h5 class="text-white mb-0">Consultation</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-headphones text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">24 Hours</p>
+                                        <h5 class="text-white mb-0">Support</h5>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 pe-lg-0 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute img-fluid w-100 h-100" src="{{ asset('assets/klinik/img/feature.jpg') }}" style="object-fit: cover;" alt="Fitur Kami">
+                        <img class="position-absolute img-fluid w-100 h-100" src="{{ asset('assets/klinik/img/feature.jpg') }}" style="object-fit: cover;" alt="">
                     </div>
                 </div>
             </div>
@@ -208,43 +217,43 @@
             </div>
             <div class="row g-4 justify-content-center">
                 @php
-            $doctors = [
-                [
-                    'name' => 'Dr. Putra Daffa',
-                    'department' => 'Bedah',
-                    'image' => 'Putra.jpg',
-                    'facebook' => 'https://www.facebook.com/putradaffa',
-                    'instagram' => 'https://www.instagram.com/putradaffad',
-                ],
-                [
-                    'name' => 'Dr. Rizky Dwi',
-                    'department' => 'Psikologi',
-                    'image' => 'Rizky.jpg',
-                    'facebook' => 'https://www.facebook.com/rizkydwi',
-                    'instagram' => 'https://www.instagram.com/rizkydnz',
-                ],
-                [
-                    'name' => 'Dr. Muhammad Arifin',
-                    'department' => 'Kelamin',
-                    'image' => 'Arifin.jpg',
-                    'facebook' => 'https://www.facebook.com/muhammadarifin',
-                    'instagram' => 'https://www.instagram.com/muhammadarifin',
-                ],
-                ];
+                    $socialMedia = [
+                        'Dr. Putra Daffa' => [
+                            'instagram' => 'https://www.instagram.com/putradaffad',
+                            'github' => 'https://github.com/putradaffad',
+                        ],
+                        'Dr. Rizky Dwi' => [
+                            'instagram' => 'https://www.instagram.com/rizkydnz',
+                            'github' => 'https://github.com/rizkydnz',
+                        ],
+                        'Dr. Muhammad Arifin' => [
+                            'instagram' => 'https://www.instagram.com/arifin.sulistiono',
+                            'github' => 'https://github.com/arifinsulistiono',
+                        ],
+                    ];
                 @endphp
+
                 @foreach ($doctors as $index => $doctor)
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="{{ 0.1 + $index * 0.2 }}s">
                         <div class="team-item position-relative rounded overflow-hidden">
                             <div class="overflow-hidden">
-                                <img class="img-fluid" src="{{ asset('assets/klinik/img/' . $doctor['image']) }}" alt="{{ $doctor['name'] }}">
+                                <img class="img-fluid" src="{{ asset($doctor->foto) }}" alt="{{ $doctor->nama }}">
                             </div>
                             <div class="team-text bg-light text-center p-4">
-                                <h5>{{ $doctor['name'] }}</h5>
-                                <p class="text-primary">{{ $doctor['department'] }}</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href="{{ $doctor['facebook'] }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href="{{ $doctor['instagram'] }}" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </div>
+                                <h5>{{ $doctor->nama }}</h5>
+                                <p class="text-primary">{{ $doctor->spesialis }}</p>
+                                <div class="team-social text-center">
+                                    @if (isset($socialMedia[$doctor->nama]['instagram']))
+                                        <a class="btn btn-square" href="{{ $socialMedia[$doctor->nama]['instagram'] }}" target="_blank">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    @endif
+                                    @if (isset($socialMedia[$doctor->nama]['github']))
+                                        <a class="btn btn-square" href="{{ $socialMedia[$doctor->nama]['github'] }}" target="_blank">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

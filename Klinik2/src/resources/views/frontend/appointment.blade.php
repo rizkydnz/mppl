@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Appointment | Klinik Bersama')
+@section('title', 'Appointment | Klinik SehatLah')
 
 @push('assets')
     <!-- Libraries Stylesheet -->
@@ -44,7 +44,7 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <p class="d-inline-block border rounded-pill py-1 px-4">Appointment</p>
-                    <h1 class="mb-4">Buat Janji Temu di Klinik Bersama</h1>
+                    <h1 class="mb-4">Buat Janji Temu di Klinik SehatLah</h1>
                     <p class="mb-4">Silakan isi formulir di samping untuk membuat janji dengan dokter kami. Kami siap melayani Anda dengan sepenuh hati.</p>
                     <div class="bg-light rounded d-flex align-items-center p-5 mb-4">
                         <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
@@ -52,7 +52,7 @@
                         </div>
                         <div class="ms-4">
                             <p class="mb-2">Call Us Now</p>
-                            <h5 class="mb-0">+012 345 6789</h5>
+                            <h5 class="mb-0">+62 2345 6789</h5>
                         </div>
                     </div>
                     <div class="bg-light rounded d-flex align-items-center p-5">
@@ -61,7 +61,7 @@
                         </div>
                         <div class="ms-4">
                             <p class="mb-2">Mail Us Now</p>
-                            <h5 class="mb-0">info@example.com</h5>
+                            <h5 class="mb-0">kliniksehatlah@gmail.com</h5>
                         </div>
                     </div>
                 </div>
@@ -76,9 +76,9 @@
                             @csrf
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" name="name" class="form-control border-0 @error('name') is-invalid @enderror" placeholder="Nama Lengkap" value="{{ old('name') }}" required style="height: 55px;">
-                                    @error('name')
-                                        <div class="invalid-feedback">{{ $appointment->name }}</div>
+                                    <input type="text" name="nama" class="form-control border-0 @error('nama') is-invalid @enderror" placeholder="Nama Lengkap" value="{{ old('nama') }}" required style="height: 55px;">
+                                    @error('nama')
+                                        <div class="invalid-feedback">{{ $appointment->nama }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -91,17 +91,6 @@
                                     <input type="text" name="mobile" class="form-control border-0 @error('mobile') is-invalid @enderror" placeholder="No. Telepon" value="{{ old('mobile') }}" required style="height: 55px;">
                                     @error('mobile')
                                         <div class="invalid-feedback">{{ $appointment->mobile }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <select name="doctor" class="form-select border-0 @error('doctor') is-invalid @enderror" required style="height: 55px;">
-                                        <option value="" disabled {{ old('doctor') ? '' : 'selected' }}>Pilih Dokter</option>
-                                        <option value="1" {{ old('doctor') == '1' ? 'selected' : '' }}>Rizky Dwi</option>
-                                        <option value="2" {{ old('doctor') == '2' ? 'selected' : '' }}>Muhammad Arifin</option>
-                                        <option value="3" {{ old('doctor') == '3' ? 'selected' : '' }}>Putra Daffa</option>
-                                    </select>
-                                    @error('doctor')
-                                        <div class="invalid-feedback">{{ $appointment->doctor }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">

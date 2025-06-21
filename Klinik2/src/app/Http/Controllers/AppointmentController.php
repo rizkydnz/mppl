@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AppointmentConfirmationMail; // Optional jika ingin kirim email
 
@@ -14,36 +15,25 @@ class AppointmentController extends Controller
      */
 public function store(Request $request)
 {
-    // Validasi input
-    $validated = $request->validate([
-        'name' => 'required|string|max:100',
-        'email' => 'required|email|max:255',
+    $request->validate([
+        'nama' => 'required|string|max:255',
+        'email' => 'required|email',
         'mobile' => 'required|string|max:20',
-        'doctor' => 'required|string|max:100',
         'date' => 'required|date',
-        'time' => 'required|string|max:20',
-        'message' => 'required|array|min:1', // ✅ VALIDASI SEBAGAI ARRAY
-        'message.*' => 'string|max:1000', // ✅ Validasi tiap item dalam array
+        'time' => 'required',
+        'message' => 'required|array|min:1',
     ]);
 
-    // Gabungkan array message menjadi string
-    $pesanGabung = implode(', ', $validated['message']);
-
-    // Simpan ke database
-    $appointment = Appointment::create([
-        'name' => $validated['name'],
-        'email' => $validated['email'],
-        'mobile' => $validated['mobile'],
-        'doctor' => $validated['doctor'],
-        'date' => $validated['date'],
-        'time' => $validated['time'],
-        'message' => $pesanGabung, // ✅ SIMPAN SEBAGAI STRING
+    Appointment::create([
+        'nama' => $request->nama,
+        'email' => $request->email,
+        'mobile' => $request->mobile,
+        'date' => $request->date,
+        'time' => $request->time,
+        'message' => implode(', ', $request->message), // Jika disimpan sebagai string
     ]);
 
-    // (Opsional) Kirim email konfirmasi
-    // Mail::to($appointment->email)->send(new AppointmentConfirmationMail($appointment));
-
-    return back()->with('success', 'Appointment berhasil dikirim!');
+    return redirect()->back()->with('success', 'Janji temu berhasil dibuat!');
 }
 
 
@@ -64,4 +54,33 @@ public function store(Request $request)
         $appointment = Appointment::findOrFail($id);
         return view('admin.appointments.show', compact('appointment'));
     }
+
+    public function payment($id)
+{
+    $appointment = Appointment::findOrFail($id);
+    $transaction = Transaction::where('appointment_id', $id)->first();
+
+    if (!$transaction) {
+        // Jika belum ada transaksi, buat transaksi baru
+        $transaction = Transaction::create([
+            'appointment_id' => $id,
+            'invoice_code' => 'INV-' . strtoupper(uniqid()),
+            'amount' => 150000, // contoh biaya tetap, bisa dinamis
+            'status' => 'unpaid'
+        ]);
+    }
+
+    return view('frontend.payment', compact('appointment', 'transaction'));
 }
+
+    public function pay($id)
+    {
+        $transaction = Transaction::where('appointment_id', $id)->firstOrFail();
+        $transaction->status = 'paid';
+        $transaction->save();
+
+        return redirect()->route('appointment.payment', $id)->with('success', 'Pembayaran berhasil!');
+    }
+}
+
+        

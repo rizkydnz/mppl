@@ -2,9 +2,9 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\AppointmentResource\Pages;
-use App\Filament\Admin\Resources\AppointmentResource\RelationManagers;
-use App\Models\Appointment;
+use App\Filament\Admin\Resources\ObatResource\Pages;
+use App\Filament\Admin\Resources\ObatResource\RelationManagers;
+use App\Models\Obat;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class AppointmentResource extends Resource
+class ObatResource extends Resource
 {
-    protected static ?string $model = Appointment::class;
+    protected static ?string $model = Obat::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -26,20 +26,11 @@ class AppointmentResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
+                Forms\Components\TextInput::make('harga')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('mobile')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\DatePicker::make('date')
+                    ->numeric(),
+                Forms\Components\TextInput::make('status')
                     ->required(),
-                Forms\Components\TextInput::make('time')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('message')
-                    ->columnSpanFull(),
             ]);
     }
 
@@ -49,15 +40,10 @@ class AppointmentResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('nama')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('mobile')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('date')
-                    ->date()
+                Tables\Columns\TextColumn::make('harga')
+                    ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('time')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('status'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -91,9 +77,9 @@ class AppointmentResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAppointments::route('/'),
-            'create' => Pages\CreateAppointment::route('/create'),
-            'edit' => Pages\EditAppointment::route('/{record}/edit'),
+            'index' => Pages\ListObats::route('/'),
+            'create' => Pages\CreateObat::route('/create'),
+            'edit' => Pages\EditObat::route('/{record}/edit'),
         ];
     }
 }

@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
         $table->id();
-        $table->string('name');
+        $table->string('nama');
         $table->string('email');
         $table->string('mobile');
-        $table->string('doctor');
         $table->date('date');
-        $table->string('time'); // bisa ubah ke `time()` jika mau
-        $table->text('message')->nullable();
+        $table->time('time');
+        $table->text('message'); // tipe text jika menyimpan banyak keluhan
         $table->timestamps();
         });
     }

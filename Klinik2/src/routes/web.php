@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\DokterController;
 
 /* NOTE: Do Not Remove
 / Livewire asset handling if using sub folder in domain
@@ -25,7 +27,7 @@ Livewire::setScriptRoute(function ($handle) {
 Route::view('/', 'frontend.index')->name('home');
 Route::view('/about', 'frontend.about')->name('about');
 Route::view('/causes', 'frontend.causes')->name('causes');
-Route::view('/service', 'frontend.service')->name('service');
+Route::view('/diagnosa', 'frontend.diagnosa')->name('diagnosa');
 Route::view('/appointment', 'frontend.appointment')->name('appointment');
 Route::view('/team', 'frontend.team')->name('team');
 Route::view('/testimonial', 'frontend.testimonial')->name('testimonial');
@@ -38,3 +40,22 @@ Route::get('/admin/appointments/{id}', [AppointmentController::class, 'show'])->
 
 // HomeController
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/team', [HomeController::class, 'team'])->name('team');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+
+// Payment
+Route::get('/appointment/{id}/payment', [AppointmentController::class, 'payment'])->name('appointment.payment');
+Route::post('/appointment/{id}/pay', [AppointmentController::class, 'pay'])->name('appointment.pay');
+
+// DiagnosaController
+Route::middleware(['role:dokter'])->group(function () {
+Route::get('/diagnosa/create', [DiagnosaController::class, 'create'])->name('diagnosa.create');
+Route::get('/appointments', [AppointmentController::class, 'index']);
+Route::get('/dokters', [DokterController::class, 'index']);
+});
+
+
+Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->group(function () {
+    Route::get('/diagnosa/create', [DiagnosaController::class, 'create'])->name('diagnosa.create');
+    Route::post('/diagnosa', [DiagnosaController::class, 'store'])->name('diagnosa.store');
+});

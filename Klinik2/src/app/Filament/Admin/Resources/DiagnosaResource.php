@@ -2,9 +2,9 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\AppointmentResource\Pages;
-use App\Filament\Admin\Resources\AppointmentResource\RelationManagers;
-use App\Models\Appointment;
+use App\Filament\Admin\Resources\DiagnosaResource\Pages;
+use App\Filament\Admin\Resources\DiagnosaResource\RelationManagers;
+use App\Models\Diagnosa;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class AppointmentResource extends Resource
+class DiagnosaResource extends Resource
 {
-    protected static ?string $model = Appointment::class;
+    protected static ?string $model = Diagnosa::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,23 +23,21 @@ class AppointmentResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama')
+                Forms\Components\TextInput::make('appointment_id')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
+                    ->numeric(),
+                Forms\Components\TextInput::make('dokter_id')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('mobile')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\DatePicker::make('date')
-                    ->required(),
-                Forms\Components\TextInput::make('time')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('message')
+                    ->numeric(),
+                Forms\Components\Textarea::make('keluhan')
                     ->columnSpanFull(),
+                Forms\Components\Select::make('status')
+                    ->required()
+                    ->options([
+                        'Belum Diperiksa' => 'Belum Diperiksa',
+                        'Sudah Diperiksa' => 'Sudah Diperiksa',
+                    ])
+                    ->native(false), // opsional: agar dropdown-nya styled dengan Filament
             ]);
     }
 
@@ -47,17 +45,18 @@ class AppointmentResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('mobile')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('date')
-                    ->date()
+                Tables\Columns\TextColumn::make('appointment_id')
+                    ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('time')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('dokter_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\BadgeColumn::make('status')
+                    ->colors([
+                        'primary' => 'Belum Diperiksa',
+                        'success' => 'Sudah Diperiksa',
+                    ])
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -91,9 +90,9 @@ class AppointmentResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAppointments::route('/'),
-            'create' => Pages\CreateAppointment::route('/create'),
-            'edit' => Pages\EditAppointment::route('/{record}/edit'),
+            'index' => Pages\ListDiagnosas::route('/'),
+            'create' => Pages\CreateDiagnosa::route('/create'),
+            'edit' => Pages\EditDiagnosa::route('/{record}/edit'),
         ];
     }
 }
