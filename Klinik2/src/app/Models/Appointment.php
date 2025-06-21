@@ -17,7 +17,7 @@ class Appointment extends Model
         'date',
         'time',
         'message',
-        'dokter_id', // pastikan ini juga di-fillable jika kamu pakai
+        'dokter_id'
     ];
 
     protected static function booted(): void
@@ -25,7 +25,7 @@ class Appointment extends Model
         static::created(function ($appointment) {
             Diagnosa::create([
                 'appointment_id' => $appointment->id,
-                'dokter_id' => $appointment->dokter_id ?? 1, // ganti default ID jika perlu
+                'dokter_id' => $appointment->dokter_id,
                 'keluhan' => $appointment->message ?? '',
                 'status' => 'Belum Diperiksa',
             ]);
@@ -41,5 +41,9 @@ class Appointment extends Model
     {
         return $this->hasOne(Diagnosa::class);
     }
-}
 
+    public function dokter()
+    {
+        return $this->belongsTo(Dokter::class);
+    }
+}

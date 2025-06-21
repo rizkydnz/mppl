@@ -10,8 +10,6 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('assets/klinik/css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
     <link href="{{ asset('assets/klinik/css/style.css') }}" rel="stylesheet">
 
     <!-- Font Awesome & Bootstrap Icons -->
@@ -78,33 +76,49 @@
                                 <div class="col-12 col-sm-6">
                                     <input type="text" name="nama" class="form-control border-0 @error('nama') is-invalid @enderror" placeholder="Nama Lengkap" value="{{ old('nama') }}" required style="height: 55px;">
                                     @error('nama')
-                                        <div class="invalid-feedback">{{ $appointment->nama }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <input type="email" name="email" class="form-control border-0 @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" required style="height: 55px;">
                                     @error('email')
-                                        <div class="invalid-feedback">{{ $appointment->email }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <input type="text" name="mobile" class="form-control border-0 @error('mobile') is-invalid @enderror" placeholder="No. Telepon" value="{{ old('mobile') }}" required style="height: 55px;">
                                     @error('mobile')
-                                        <div class="invalid-feedback">{{ $appointment->mobile }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <input type="date" name="date" class="form-control border-0 @error('date') is-invalid @enderror" value="{{ old('date') }}" required style="height: 55px;">
                                     @error('date')
-                                        <div class="invalid-feedback">{{ $appointment->date }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <input type="time" name="time" class="form-control border-0 @error('time') is-invalid @enderror" value="{{ old('time') }}" required style="height: 55px;">
                                     @error('time')
-                                        <div class="invalid-feedback">{{ $appointment->time }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
+
+                                <!-- Tambahkan dropdown dokter -->
+                                <div class="col-12 col-sm-6">
+                                    <select name="dokter_id" class="form-select border-0 @error('dokter_id') is-invalid @enderror" required style="height: 55px;">
+                                        <option value="" disabled selected>Pilih Dokter</option>
+                                        @foreach ($dokters as $dokter)
+                                            <option value="{{ $dokter->id }}" {{ old('dokter_id') == $dokter->id ? 'selected' : '' }}>
+                                                {{ $dokter->nama }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('dokter_id')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
                                 <div class="col-12">
                                     <label class="form-label mb-2">Pilih Keluhan</label>
                                     <div class="form-check">
@@ -128,7 +142,7 @@
                                         <label class="form-check-label" for="sakitperut">Sakit Perut</label>
                                     </div>
                                     @error('message')
-                                        <div class="invalid-feedback d-block">{{ $appoinment->message }}</div>
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-12">
@@ -137,13 +151,11 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
     <!-- Appointment End -->
-
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -159,5 +171,4 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
-
 @endsection
