@@ -3,15 +3,15 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\DiagnosaResource\Pages;
-use App\Filament\Admin\Resources\DiagnosaResource\RelationManagers;
 use App\Models\Diagnosa;
+use App\Models\Dokter;
+use App\Models\Appointment;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class DiagnosaResource extends Resource
 {
@@ -23,21 +23,29 @@ class DiagnosaResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('appointment_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('dokter_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('appointment_id')
+                    ->label('Nama Pasien')
+                    ->relationship('appointment', 'nama') // ganti sesuai kolom nama pasien
+                    ->searchable()
+                    ->required(),
+
+                Forms\Components\Select::make('dokter_id')
+                    ->label('Dokter')
+                    ->relationship('dokter', 'nama')
+                    ->searchable()
+                    ->required(),
+
                 Forms\Components\Textarea::make('keluhan')
+                    ->label('Keluhan')
                     ->columnSpanFull(),
+
                 Forms\Components\Select::make('status')
-                    ->required()
                     ->options([
-                        'Belum Diperiksa' => 'Belum Diperiksa',
-                        'Sudah Diperiksa' => 'Sudah Diperiksa',
+                        'Belum diperiksa' => 'Belum diperiksa',
+                        'Sudah diperiksa' => 'Sudah diperiksa',
                     ])
-                    ->native(false), // opsional: agar dropdown-nya styled dengan Filament
+                    ->label('Status')
+                    ->native(false),
             ]);
     }
 
@@ -45,29 +53,40 @@ class DiagnosaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('appointment_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('appointment.nama') // ganti sesuai field pasien
+                    ->label('Nama Pasien')
+                    ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('dokter_id')
-                    ->numeric()
+
+                Tables\Columns\TextColumn::make('dokter.nama')
+                    ->label('Dokter')
+                    ->searchable()
                     ->sortable(),
+
+                Tables\Columns\TextColumn::make('keluhan')
+                    ->label('Keluhan')
+                    ->limit(50)
+                    ->wrap(),
+
                 Tables\Columns\BadgeColumn::make('status')
+                    ->label('Status')
                     ->colors([
                         'primary' => 'Belum Diperiksa',
                         'success' => 'Sudah Diperiksa',
                     ])
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Dibuat')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Diperbarui')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -82,9 +101,7 @@ class DiagnosaResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

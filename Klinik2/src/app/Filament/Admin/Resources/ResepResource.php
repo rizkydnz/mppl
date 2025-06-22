@@ -2,9 +2,9 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\ObatResource\Pages;
-use App\Filament\Admin\Resources\ObatResource\RelationManagers;
-use App\Models\Obat;
+use App\Filament\Admin\Resources\ResepResource\Pages;
+use App\Filament\Admin\Resources\ResepResource\RelationManagers;
+use App\Models\Resep;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ObatResource extends Resource
+class ResepResource extends Resource
 {
-    protected static ?string $model = Obat::class;
+    protected static ?string $model = Resep::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,18 +23,14 @@ class ObatResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('harga')
+                Forms\Components\TextInput::make('diagnosa_id')
                     ->required()
                     ->numeric(),
-                Forms\Components\Select::make('status')
-                    ->required()
-                    ->options([
-                        'Sebelum Makan' => 'Sebelum Makan',
-                        'Sesudah Makan' => 'Sesudah Makan',
-                    ])
+                Forms\Components\Select::make('obat_id')
+                    ->label('Obat')
+                    ->relationship('obat', 'nama') // sesuaikan nama kolom
+                    ->searchable()
+                    ->required(),
             ]);
     }
 
@@ -42,17 +38,12 @@ class ObatResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('harga')
+                Tables\Columns\TextColumn::make('diagnosa_id')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\BadgeColumn::make('status')
-                    ->label('Status')
-                    ->colors([
-                        'primary' => 'Sebelum Makan',
-                        'success' => 'Sesudah Makan',
-                    ])
+                Tables\Columns\TextColumn::make('obat.nama')
+                    ->label('Obat')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -68,7 +59,6 @@ class ObatResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -87,9 +77,9 @@ class ObatResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListObats::route('/'),
-            'create' => Pages\CreateObat::route('/create'),
-            'edit' => Pages\EditObat::route('/{record}/edit'),
+            'index' => Pages\ListReseps::route('/'),
+            'create' => Pages\CreateResep::route('/create'),
+            'edit' => Pages\EditResep::route('/{record}/edit'),
         ];
     }
 }

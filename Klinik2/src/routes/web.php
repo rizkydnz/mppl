@@ -39,7 +39,6 @@ Route::post('/appointment', [AppointmentController::class, 'store'])->name('appo
 Route::get('/admin/appointments/{id}', [AppointmentController::class, 'show'])->name('admin.appointments.show'); // (Opsional) Detail per appointment
 Route::get('/appointment', [AppointmentController::class, 'create'])->name('appointment.create');
 
-
 // HomeController
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/team', [HomeController::class, 'team'])->name('team');
@@ -55,7 +54,6 @@ Route::get('/diagnosa/create', [DiagnosaController::class, 'create'])->name('dia
 Route::get('/appointments', [AppointmentController::class, 'index']);
 Route::get('/dokters', [DokterController::class, 'index']);
 });
-
 
 Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->group(function () {
     Route::get('/diagnosa/create', [DiagnosaController::class, 'create'])->name('diagnosa.create');
