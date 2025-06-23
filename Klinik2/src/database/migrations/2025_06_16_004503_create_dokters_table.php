@@ -16,6 +16,7 @@
                 $table->string('nama');
                 $table->string('spesialis')->nullable(); // contoh: Umum, Gigi, Anak
                 $table->string('foto')->nullable(); // path ke gambar profil dokter
+                $table->integer('harga_jasa')->nullable(); // Harga Jasa
                 $table->timestamps();
             });
         }

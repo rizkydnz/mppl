@@ -13,5 +13,6 @@ class Dokter extends Model
         'nama',
         'spesialis',
         'foto',
+        'harga_jasa',
     ];
 }

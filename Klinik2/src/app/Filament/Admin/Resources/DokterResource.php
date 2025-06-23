@@ -30,8 +30,14 @@ class DokterResource extends Resource
                     ->maxLength(255)
                     ->default(null),
                 Forms\Components\FileUpload::make('foto')
-                    ->image()
-                    ->required(),
+                    ->image(),
+
+                Forms\Components\TextInput::make('harga_jasa')
+                    ->label('Harga Jasa (Rp)')
+                    ->numeric()
+                    ->required()
+                    ->minValue(0)
+                    ->default(0),
             ]);
     }
 
@@ -44,6 +50,10 @@ class DokterResource extends Resource
                 Tables\Columns\TextColumn::make('spesialis')
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('foto'),
+                Tables\Columns\TextColumn::make('harga_jasa')
+                    ->label('Harga Jasa')
+                    ->money('IDR', true)
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

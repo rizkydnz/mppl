@@ -16,7 +16,8 @@ return new class extends Migration
             $table->foreignId('appointment_id')->constrained()->onDelete('cascade');
             $table->string('invoice_code')->unique();
             $table->decimal('amount', 10, 2);
-            $table->enum('status', ['unpaid', 'paid'])->default('unpaid');
+            $table->enum('status', ['Belum Lunas', 'Lunas'])->default('Belum Lunas');
+            $table->string('payment_method')->nullable();
             $table->timestamps();
         });
     }

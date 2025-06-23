@@ -18,16 +18,19 @@ class DokterSeeder extends Seeder
                 'nama' => 'Dr. Muhammad Arifin',
                 'spesialis' => 'Umum',
                 'foto' => 'assets/klinik/img/Arifin.jpg',
+                'harga_jasa' => 50000,
             ],
             [
                 'nama' => 'Dr. Rizky Dwi',
                 'spesialis' => 'Umum',
                 'foto' => 'assets/klinik/img/Rizky.jpg',
+                'harga_jasa' => 60000,
             ],
             [
                 'nama' => 'Dr. Putra Daffa',
                 'spesialis' => 'Umum',
                 'foto' => 'assets/klinik/img/Putra.jpg',
+                'harga_jasa' => 55000,
             ],
         ]);
     }

@@ -3,34 +3,41 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\ResepResource\Pages;
-use App\Filament\Admin\Resources\ResepResource\RelationManagers;
 use App\Models\Resep;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ResepResource extends Resource
 {
     protected static ?string $model = Resep::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Resep Obat';
+    protected static ?string $pluralModelLabel = 'Resep';
+    protected static ?string $modelLabel = 'Resep';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('diagnosa_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\Select::make('obat_id')
-                    ->label('Obat')
-                    ->relationship('obat', 'nama') // sesuaikan nama kolom
+                Forms\Components\Select::make('diagnosa_id')
+                    ->label('Pasien')
+                    ->relationship('diagnosa', 'id')
+                    ->getOptionLabelFromRecordUsing(function ($record) {
+                        return $record->appointment->nama . ' - ' . $record->keluhan;
+                    })
                     ->searchable()
                     ->required(),
+
+                Forms\Components\MultiSelect::make('obats')
+                    ->label('Obat-obatan')
+                    ->relationship('obats', 'nama') // relasi many-to-many
+                    ->searchable()
+                    ->required()
+                    ->placeholder('Pilih satu atau lebih obat'),
             ]);
     }
 
@@ -38,18 +45,29 @@ class ResepResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('diagnosa_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('obat.nama')
-                    ->label('Obat')
+                Tables\Columns\TextColumn::make('diagnosa.appointment.nama')
+                    ->label('Nama Pasien')
                     ->searchable()
                     ->sortable(),
+
+                Tables\Columns\TextColumn::make('diagnosa.keluhan')
+                    ->label('Keluhan')
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('obats')
+                    ->label('Obat-obatan')
+                    ->formatStateUsing(fn ($record) => $record->obats->pluck('nama')->implode(', ') ?: '-')
+                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Dibuat')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Diperbarui')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
