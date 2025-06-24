@@ -57,7 +57,7 @@
     <div class="header">
         <h2>Klinik SehatLah</h2>
         <p>Kab. Tangerang, Cikupa, Citra Raya</p>
-        <p>Telp: +62 2345 6789 | Email: kliniksehatlah@gmail.com</p>
+        <p>Telp: +62 2345 6789 | Email: suksesorang6666@gmail.com</p>
         <hr>
         <h3>Invoice Pembayaran</h3>
     </div>

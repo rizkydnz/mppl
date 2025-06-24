@@ -68,3 +68,6 @@ Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->group(function () 
     Route::get('/diagnosa/create', [DiagnosaController::class, 'create'])->name('diagnosa.create');
     Route::post('/diagnosa', [DiagnosaController::class, 'store'])->name('diagnosa.store');
 });
+
+Route::get('/appointments/{id}/approve', [AppointmentController::class, 'approve'])->name('appointments.approve');
+    
