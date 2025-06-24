@@ -56,18 +56,11 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 // Payment
 Route::get('/appointment/{id}/payment', [AppointmentController::class, 'payment'])->name('appointment.payment');
 Route::post('/appointment/{id}/pay', [AppointmentController::class, 'pay'])->name('appointment.pay');
+Route::get('/appointments/{id}/approve', [AppointmentController::class, 'approve'])->name('appointments.approve');
 
 // DiagnosaController
-Route::middleware(['role:dokter'])->group(function () {
 Route::get('/diagnosa/create', [DiagnosaController::class, 'create'])->name('diagnosa.create');
 Route::get('/appointments', [AppointmentController::class, 'index']);
 Route::get('/dokters', [DokterController::class, 'index']);
-});
-
-Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->group(function () {
-    Route::get('/diagnosa/create', [DiagnosaController::class, 'create'])->name('diagnosa.create');
-    Route::post('/diagnosa', [DiagnosaController::class, 'store'])->name('diagnosa.store');
-});
-
-Route::get('/appointments/{id}/approve', [AppointmentController::class, 'approve'])->name('appointments.approve');
-    
+Route::get('/diagnosa/create', [DiagnosaController::class, 'create'])->name('diagnosa.create');
+Route::post('/diagnosa', [DiagnosaController::class, 'store'])->name('diagnosa.store');
