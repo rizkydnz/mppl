@@ -59,7 +59,7 @@
                         </div>
                         <div class="ms-4">
                             <p class="mb-2">Mail Us Now</p>
-                            <h5 class="mb-0">kliniksehatlah@gmail.com</h5>
+                            <h5 class="mb-0">suksesorang6666@gmail.com</h5>
                         </div>
                     </div>
                 </div>

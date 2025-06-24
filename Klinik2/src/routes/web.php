@@ -27,13 +27,11 @@ Livewire::setScriptRoute(function ($handle) {
 // Routing halaman utama frontend (pakai folder frontend)
 Route::view('/', 'frontend.index')->name('home');
 Route::view('/about', 'frontend.about')->name('about');
-Route::view('/causes', 'frontend.causes')->name('causes');
-Route::view('/diagnosa', 'frontend.diagnosa')->name('diagnosa');
-Route::view('/appointment', 'frontend.appointment')->name('appointment');
 Route::view('/team', 'frontend.team')->name('team');
-Route::view('/payment', 'frontend.payment')->name('payment');
 Route::view('/contact', 'frontend.contact')->name('contact');
-Route::view('/404', 'frontend.404')->name('404');
+Route::view('/payment', 'frontend.payment')->name('payment');
+Route::view('/appointment', 'frontend.appointment')->name('appointment');
+Route::view('/diagnosa', 'frontend.diagnosa')->name('diagnosa');
 
 // AppointmentController
 Route::post('/appointment', [AppointmentController::class, 'store'])->name('appointment.store'); // Untuk menyimpan appointment dari form
@@ -57,10 +55,11 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/appointment/{id}/payment', [AppointmentController::class, 'payment'])->name('appointment.payment');
 Route::post('/appointment/{id}/pay', [AppointmentController::class, 'pay'])->name('appointment.pay');
 Route::get('/appointments/{id}/approve', [AppointmentController::class, 'approve'])->name('appointments.approve');
+Route::get('/appointments', [AppointmentController::class, 'index']);
 
 // DiagnosaController
 Route::get('/diagnosa/create', [DiagnosaController::class, 'create'])->name('diagnosa.create');
-Route::get('/appointments', [AppointmentController::class, 'index']);
-Route::get('/dokters', [DokterController::class, 'index']);
 Route::get('/diagnosa/create', [DiagnosaController::class, 'create'])->name('diagnosa.create');
 Route::post('/diagnosa', [DiagnosaController::class, 'store'])->name('diagnosa.store');
+
+Route::get('/dokters', [DokterController::class, 'index']);

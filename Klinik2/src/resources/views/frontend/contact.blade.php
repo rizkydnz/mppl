@@ -70,9 +70,9 @@
                         <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
                             <i class="fa fa-envelope-open text-primary"></i>
                         </div>
-                        <div class="ms-4">
+                        <div class="ms-2">
                             <p class="mb-2">Mail Sekarang</p>
-                            <h5 class="mb-0">suksesorang6666@gmail.com</h5>
+                            <h5 class="mb-0 text-nowrap">suksesorang6666@gmail.com</h5>
                         </div>
                     </div>
                 </div>

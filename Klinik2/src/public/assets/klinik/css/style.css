@@ -517,3 +517,8 @@
 .footer .copyright a:hover {
     color: var(--primary);
 }
+
+.text-break {
+    word-wrap: break-word;
+    word-break: break-word;
+}
