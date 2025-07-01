@@ -8,9 +8,9 @@ use App\Models\Appointment;
 use App\Models\Transaction;
 use App\Models\Dokter;
 use App\Mail\AppointmentApprovedMail;
+use App\Mail\AppointmentRejectedMail;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PaymentSuccessMail;
-
 
 class AppointmentController extends Controller
 {
@@ -178,4 +178,20 @@ public function approve($id)
 
     return redirect()->route('appointments.index')->with('success', 'Appointment berhasil disetujui dan email telah dikirim.');
 }
+
+
+public function reject($id)
+{
+    $appointment = Appointment::findOrFail($id);
+    $appointment->status = 'Rejected';
+    $appointment->save();
+
+    // Pastikan menggunakan email langsung dari $appointment
+    if ($appointment->email) {
+        Mail::to($appointment->email)->send(new AppointmentRejectedMail($appointment));
+    }
+
+    return redirect()->route('appointments.index')->with('success', 'Appointment ditolak dan email dikirim.');
+}
+
 }

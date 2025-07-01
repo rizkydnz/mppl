@@ -4,7 +4,7 @@
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
                 <h1 class="fw-bold text-primary mb-4">Klinik <span class="text-white">SehatLah</span></h1>
-                <p>Jagalah kesehatan tubuh mu seperti kamu menjaga dia dengan baik, jangan tunggu sakit untuk sehat</p>
+                <p>Jagalah kesehatan tubuh mu seperti kamu menjaga dia dengan baik, jangan tunggu sakit untuk sehat!</p>
             </div>
             
             <div class="col-lg-3 col-md-6">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Designed By <a href="https://htmlcodex.com">Kelompok 6</a>
+                    Designed By <a href="https://htmlcodex.com">HTML Codex</a>
                 </div>
             </div>
         </div>

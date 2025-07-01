@@ -88,6 +88,34 @@ class AppointmentResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+
+            Tables\Actions\Action::make('approve')
+                ->label('Approve')
+                ->color('success')
+                ->icon('heroicon-o-check-circle')
+                ->visible(fn ($record) => $record->status === 'pending')
+                ->action(function ($record) {
+                    $record->update(['status' => 'approved']);
+
+                    // Kirim email approved
+                    \Mail::to($record->email)->send(new \App\Mail\AppointmentApprovedMail($record));
+                })
+                ->requiresConfirmation()
+                ->successNotificationTitle('Appointment disetujui dan email dikirim.'),
+
+            Tables\Actions\Action::make('reject')
+                ->label('Reject')
+                ->color('danger')
+                ->icon('heroicon-o-x-circle')
+                ->visible(fn ($record) => $record->status === 'pending')
+                ->action(function ($record) {
+                    $record->update(['status' => 'rejected']);
+
+                    // Kirim email rejected
+                    \Mail::to($record->email)->send(new \App\Mail\AppointmentRejectedMail($record));
+                })
+                ->requiresConfirmation()
+                ->successNotificationTitle('Appointment ditolak dan email dikirim.'),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

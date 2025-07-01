@@ -40,11 +40,13 @@ Route::get('/appointment', [AppointmentController::class, 'create'])->name('appo
 Route::get('/appointment/{id}/payment', [AppointmentController::class, 'payment'])->name('appointment.payment');
 Route::post('/appointment/{id}/pay', [AppointmentController::class, 'pay'])->name('appointment.pay');
 
+Route::post('/appointments/{id}/reject', [AppointmentController::class, 'reject'])->name('appointments.reject');
+
+
 Route::get('/payment', [AppointmentController::class, 'paymentForm'])->name('appointment.payment.form');
 Route::post('/payment', [AppointmentController::class, 'paymentByEmail'])->name('appointment.payment.email');
 Route::post('/payment/pay/{id}', [AppointmentController::class, 'pay'])->name('appointment.pay');
 Route::get('/payment/invoice/{id}', [AppointmentController::class, 'invoice'])->name('appointment.payment.invoice');
-
 
 // HomeController
 Route::get('/', [HomeController::class, 'index']);
@@ -63,3 +65,5 @@ Route::get('/diagnosa/create', [DiagnosaController::class, 'create'])->name('dia
 Route::post('/diagnosa', [DiagnosaController::class, 'store'])->name('diagnosa.store');
 
 Route::get('/dokters', [DokterController::class, 'index']);
+
+Route::post('/admin/appointments/{id}/reject', [AppointmentController::class, 'reject'])->name('admin.appointments.reject');
